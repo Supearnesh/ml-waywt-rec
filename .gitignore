@@ -1,0 +1,2 @@
+# Ignore local updates to .env files
+.env
