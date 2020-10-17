@@ -8,7 +8,7 @@
 
 - [Introduction](#introduction)
 - [Introduction](#introduction)
-- [<a name='installation-guide'>Installation Guide</a>](#-a-name--installation-guide--installation-guide--a-)
+- [Installation Guide](#installation-guide)
   * [Getting Started](#getting-started)
 - [What's Included?](#what-s-included-)
 - [Code of Conduct](#code-of-conduct)
@@ -26,7 +26,7 @@ This is a hackathon boilerplate for new Flask web applications created by [Major
 - [User Guide](https://github.com/MLH/mlh-hackathon-flask-starter/blob/master/docs/USER_GUIDE.md) - How to develop apps created with this starter project
 - [Contributing Guide](https://github.com/MLH/mlh-hackathon-flask-starter/blob/master/docs/CONTRIBUTING.md) - How to contribute to the project
 
-## <a name='installation-guide'>Installation Guide</a>
+## Installation Guide
 
 This project requires the following tools:
 
