@@ -7,7 +7,6 @@
 
 
 - [Introduction](#introduction)
-- [Introduction](#introduction)
 - [Installation Guide](#installation-guide)
   * [Getting Started](#getting-started)
 - [What's Included?](#what-s-included-)
