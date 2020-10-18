@@ -1,0 +1,37 @@
+# Create .env file with DB info
+cd ml-waywt-rec
+echo DATABASE_URL="postgres://localhost:5432/waywt-db" > .env
+
+# Set up database and login
+su - postgress
+create db waywt-db
+psql waywt-db
+
+# After login, create tables
+CREATE TABLE user_data(
+id int,
+gender VARCHAR(255),
+gender_present VARCHAR(255),
+style VARCHAR(255),
+age VARCHAR(255),
+fav_color VARCHAR(255),
+location VARCHAR(255),
+PRIMARY KEY (id),
+FOREIGN KEY (id) REFERENCES users (id) ON DELETE CASCADE
+);
+
+CREATE TABLE fashion_vector(
+id int,
+pattern VARCHAR(255),
+material VARCHAR(255),
+fit VARCHAR(255),
+cut VARCHAR(255),
+style VARCHAR(255),
+PRIMARY KEY (id),
+FOREIGN KEY (id) REFERENCES users (id) ON DELETE CASCADE);
+
+CREATE TABLE users(
+id SERIAL PRIMARY KEY,
+username VARCHAR(255),
+email VARCHAR(255),
+password VARCHAR(255));
