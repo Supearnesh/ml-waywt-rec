@@ -12,11 +12,15 @@ def create_app(config_object=settings):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(config_object)
     app.config['SQLALCHEMY_DATABASE_URI'] = settings.SQLALCHEMY_DATABASE_URI
+    app.secret_key = os.urandom(16)
 
+    create_database(app)
     register_blueprints(app)
     register_errorhandlers(app)
     return app
 
+def create_database(app):
+    db.init_app(app)
 
 def register_blueprints(app):
     """Register Flask blueprints."""
