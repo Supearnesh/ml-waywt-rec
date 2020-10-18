@@ -13,18 +13,24 @@
   {% endblock %}
   {% block content %}
     {% if g.user %}
-    <form action="/" method="POST">
-      <div class="login">
-        <div class="login-screen">
-          <div class="app-title">
-            <h1>Get Outfit Recommendation</h1>
-          </div>
-          <input type="file" class="login-field" name="file1" autocomplete="off" required>
-          <input type="file" class="login-field" name="file2" autocomplete="off" required>
-          <input type="file" class="login-field" name="file3" autocomplete="off" required>
-          <input type="submit" value="Submit" class="btn btn-primary btn-large btn-block">
+      {% if filename %}
+        <div>
+          <img src="{{ url_for('home.display_image', filename=filename) }}">
         </div>
-      </div>
-    </form>
+      {% else %}
+        <form action="/" method="POST" enctype="multipart/form-data">
+          <div class="login">
+            <div class="login-screen">
+              <div class="app-title">
+                <h1>Get Outfit Recommendation</h1>
+              </div>
+              <input type="file" class="login-field" name="file1" autocomplete="off" required>
+              <input type="file" class="login-field" name="file2" autocomplete="off" required>
+              <input type="file" class="login-field" name="file3" autocomplete="off" required>
+              <input type="submit" value="Submit" class="btn btn-primary btn-large btn-block">
+            </div>
+          </div>
+        </form>
+      {% endif %}
     {% endif %}
   {% endblock %}
