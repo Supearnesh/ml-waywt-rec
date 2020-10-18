@@ -1,0 +1,30 @@
+{% extends "layouts/layout.html" %}
+
+{% block content %}
+<form action="/signup" method="POST">
+  <div class="login">
+    <div class="login-screen">
+      <div class="app-title">
+<<<<<<< HEAD
+        <h1>Sign Up</h1>
+=======
+        <h1>Login</h1>
+>>>>>>> a311bdd0e32f7176cc5cdf8cc80ddbfedb3d5d72
+      </div>
+      <div class="login-form">
+      <div class="control-group">
+              <input type="text" class="login-field" value="" placeholder="email" name="email">
+      <label class="login-field-icon fui-user" for="login-name"></label></div>
+      <div class="control-group">
+              <input type="text" class="login-field" value="" placeholder="username" name="username">
+      <label class="login-field-icon fui-user" for="login-name"></label></div>
+      <div class="control-group">
+              <input type="password" class="login-field" value="" placeholder="password" name="password">
+      <label class="login-field-icon fui-lock" for="login-pass"></label></div>
+      <input type="submit" value="Log in" class="btn btn-primary btn-large btn-block">
+        
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}
