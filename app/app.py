@@ -28,7 +28,6 @@ def register_blueprints(app):
     """Register Flask blueprints."""
     app.register_blueprint(controllers.home.blueprint)
     app.register_blueprint(controllers.auth.blueprint)
-    app.register_blueprint(controllers.tutorial.blueprint)
     return None
 
 def register_errorhandlers(app):
