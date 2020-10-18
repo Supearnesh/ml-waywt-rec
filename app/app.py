@@ -1,7 +1,8 @@
 import os
 
 from flask import Flask, render_template
-from . import settings, controllers
+from . import settings, controllers, models
+from .extensions import db
 from flask_sqlalchemy import SQLAlchemy
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
@@ -11,7 +12,6 @@ def create_app(config_object=settings):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(config_object)
     app.config['SQLALCHEMY_DATABASE_URI'] = settings.SQLALCHEMY_DATABASE_URI
-    db = SQLAlchemy(app)
 
     register_blueprints(app)
     register_errorhandlers(app)
