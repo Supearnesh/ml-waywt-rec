@@ -4,8 +4,6 @@ import functools, json, requests
 from flask import flash, redirect, render_template, request
 from flask import Blueprint, session, url_for, g
 
-from app.models.user import User
-
 blueprint = Blueprint('auth', __name__, url_prefix='/auth')
 
 @blueprint.route('/signup', methods=['POST'])
