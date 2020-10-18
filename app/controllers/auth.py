@@ -20,13 +20,17 @@ def signup():
         email = str(request.form['email'])
         password = str(request.form['password'])
 
-        if not db.session.query(User).filter(User.email == email).count():
-            reg = User(username, email, password)
-            db.session.add(reg)
-            db.session.commit()
-            return redirect(url_for('home.index'))
-        else:
-            flash('email already in use')
+        try:
+            if not db.session.query(User).filter(User.email == email).count():
+                reg = User(username, email, password)
+                db.session.add(reg)
+                db.session.commit()
+                return redirect(url_for('home.index'))
+            else:
+                flash('email already in use')
+        except:
+            pass
+
 
     return render_template('home/signup.html')
 
@@ -41,19 +45,14 @@ def login():
 
         query = db.session.query(User).filter(User.username.in_([username]), User.password.in_([password]) )
         result = query.first()
+        print(result)
         if result:
             session['logged_in'] = True
+            session['username'] = username
             return redirect(url_for('home.index'))
         else:
-            flash('wrong password!')
+            flash('wrong username or password!')
     return render_template('home/login.html')
-
-
-@blueprint.route('/callback', methods=('GET', 'POST'))
-def callback():
-
-    # TODO
-    pass
 
 @blueprint.route('/logout')
 def logout():
@@ -62,9 +61,9 @@ def logout():
 
 @blueprint.before_app_request
 def get_current_user():
-    user_id = session.get('user_id')
+    user_id = session.get('username')
 
     if user_id is None:
         g.user = None
     else:
-        g.user = User.query.filter_by(id=user_id).first() # TODO: get user ID
+        g.user = User.query.filter_by(username=user_id).first()
