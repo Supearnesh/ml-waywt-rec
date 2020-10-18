@@ -6,6 +6,7 @@ from .extensions import db
 from flask_sqlalchemy import SQLAlchemy
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.abspath('app/static/uploads')
 
 def create_app(config_object=settings):
     # create and configure the app
@@ -13,6 +14,8 @@ def create_app(config_object=settings):
     app.config.from_object(config_object)
     app.config['SQLALCHEMY_DATABASE_URI'] = settings.SQLALCHEMY_DATABASE_URI
     app.secret_key = os.urandom(16)
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+    app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
     create_database(app)
     register_blueprints(app)

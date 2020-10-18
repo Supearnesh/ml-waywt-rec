@@ -1,0 +1,35 @@
+{% extends "layouts/layout.html" %}
+
+{% block content %}
+<form action="/submit_profile" method="POST">
+  <div class="login">
+    <div class="login-screen">
+      <div class="app-title">
+        <h1>Let Us Know About You!</h1>
+      </div>
+      <div class="login-form">
+      <div class="control-group">
+              <input type="int" class="login-field" value="" placeholder="age" name="age">
+      <label class="login-field-icon fui-user" for="login-name"></label></div>
+      <div class="control-group">
+              <input type="text" class="login-field" value="" placeholder="gender" name="gender">
+      <label class="login-field-icon fui-user" for="login-name"></label></div>
+      <div class="control-group">
+              <input type="text" class="login-field" value="" placeholder="gender presentation" name="gen_pres">
+      <label class="login-field-icon fui-lock" for="login-pass"></label></div>
+      <div class="control-group">
+              <input type="text" class="login-field" value="" placeholder="style" name="style">
+      <label class="login-field-icon fui-lock" for="login-pass"></label></div>
+      <div class="control-group">
+              <input type="text" class="login-field" value="" placeholder="favorite color" name="fav_color">
+      <label class="login-field-icon fui-lock" for="login-pass"></label></div>
+      <div class="control-group">
+              <input type="text" class="login-field" value="" placeholder="location" name="location">
+      <label class="login-field-icon fui-lock" for="login-pass"></label></div>
+      <input type="submit" value="Submit" class="btn btn-primary btn-large btn-block">
+        
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}
