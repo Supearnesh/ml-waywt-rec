@@ -5,6 +5,7 @@ from flask import flash, redirect, render_template, request
 from flask import Blueprint, session, url_for, g
 
 from app.models.user import User
+from app.models.profile import Profile
 from app.extensions import db
 
 blueprint = Blueprint('auth', __name__)
@@ -58,6 +59,34 @@ def login():
 def logout():
     session.clear()
     return redirect(url_for('home.index'))
+
+@blueprint.route('/profile', methods=['GET', 'POST'])
+def submit_profile():
+    age = None
+    gender = None
+    gen_pres = None
+    style = None
+    fav_color = None
+    loc = None
+
+    if request.method == 'POST':
+        age = str(request.form['age'])
+        gender = str(request.form['gender'])
+        gen_pres = str(request.form['gen_pres'])
+        style = str(request.form['style'])
+        fav_color = str(request.form['fav_color'])
+        loc = str(request.form['loc'])
+
+        try:
+            reg = Profile(age, gender, gen_pres, style, fav_color, loc)
+            db.session.add(reg)
+            db.session.commit()
+            return redirect(url_for('home.index'))
+        except:
+            flash('something\'s amiss')
+
+
+    return render_template('home/profile.html')
 
 @blueprint.before_app_request
 def get_current_user():

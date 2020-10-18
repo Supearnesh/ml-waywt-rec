@@ -16,22 +16,17 @@
         </li>
         {% if g.user %}
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Settings
+            <a class="nav-link dropdown-toggle p-2 pr-3" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{ g.user['username'] }}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{ url_for('home.index' )}}">Setting 1</a>
-            </div>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{ url_for('home.index' )}}">Setting 2</a>
+              <a class="dropdown-item" href="{{ url_for('auth.submit_profile' )}}">Update Profile</a>
+              <a class="dropdown-item" href="{{ url_for('home.index' )}}">Account Information</a>
             </div>
           </li>
-          <li class="nav-item p-2 pr-3">
-            {{ g.user['username'] }}
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-inherit" href="{{ url_for('auth.logout') }}">Log out</a>
-          </li>
+            <li class="nav-item">
+              <a class="nav-link text-inherit" href="{{ url_for('auth.logout') }}">Log out</a>
+            </li>
         {% else %}
           <li class="nav-item">
             <a class="nav-link text-inherit" href="{{ url_for('auth.login') }}">
