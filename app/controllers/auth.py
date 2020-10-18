@@ -4,22 +4,50 @@ import functools, json, requests
 from flask import flash, redirect, render_template, request
 from flask import Blueprint, session, url_for, g
 
-blueprint = Blueprint('auth', __name__, url_prefix='/auth')
+from app.models.user import User
+from app.extensions import db
 
-@blueprint.route('/signup', methods=['POST'])
+blueprint = Blueprint('auth', __name__)
+
+@blueprint.route('/signup', methods=['GET', 'POST'])
 def signup():
-    POST_USERNAME = str(request.form['username'])
-    POST_PASSWORD = str(request.form(['password']))
+    username = None
+    email = None
+    password = None
 
-    # TODO
+    if request.method == 'POST':
+        username = str(request.form['username'])
+        email = str(request.form['email'])
+        password = str(request.form['password'])
 
-@blueprint.route('/login', methods=['POST'])
+        if not db.session.query(User).filter(User.email == email).count():
+            reg = User(username, email, password)
+            db.session.add(reg)
+            db.session.commit()
+            return redirect(url_for('home.index'))
+        else:
+            flash('email already in use')
+
+    return render_template('home/signup.html')
+
+@blueprint.route('/login', methods=['GET', 'POST'])
 def login():
-    POST_USERNAME = str(request.form['username'])
-    POST_PASSWORD = str(request.form(['password']))
+    username = None
+    password = None
 
-    # TODO
-    pass
+    if request.method == 'POST':
+        username = str(request.form['username'])
+        password = str(request.form['password'])
+
+        query = db.session.query(User).filter(User.username.in_([username]), User.password.in_([password]) )
+        result = query.first()
+        if result:
+            session['logged_in'] = True
+            return redirect(url_for('home.index'))
+        else:
+            flash('wrong password!')
+    return render_template('home/login.html')
+
 
 @blueprint.route('/callback', methods=('GET', 'POST'))
 def callback():
