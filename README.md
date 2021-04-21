@@ -30,7 +30,7 @@
 ## Introduction
 
 
-The goal of this project is to develop a recommender system that will accept a few different user-supplied image of clothing as input, score them against the user's 'style vector' which is generated via user preferences during initialization of the app, and then rank the different outfits to help the user decide what to wear. All image files used to train the model for this project are from the DeepFashion dataset.
+The goal of this project is to develop a recommender system that will accept a few different user-supplied image of clothing as input, score them against the user's 'style vector' generated via user preferences during initialization of the app, and rank different outfits to help the user decide what to wear. All image files used to train the model for this project are from the DeepFashion dataset.
 
 
 > Ziwei Liu, Ping Luo, Shi Qiu, Xiaogang Wang, and Xiaoou Tang. DeepFashion: Powering Robust Clothes Recognition and Retrieval with Rich Annotations. In Proceedings of IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2016.
