@@ -16,7 +16,7 @@
 - [Machine Learning Pipeline](#machine-learning-pipeline)
   * [Step 1 - Importing the datasets](#step-1---importing-the-datasets)
   * [Step 2 - Pre-processing data](#step-2---pre-processing-data)
-  * [Step 3 - Training the CNN (using transfer learning)](#step-3---training-the-cnn--using-transfer-learning-)
+  * [Step 3 - Training the CNN (using transfer learning)](#step-3---training-the-cnn-using-transfer-learning)
     + [Part A - Specify Loss Function and Optimizer](#part-a---specify-loss-function-and-optimizer)
     + [Part B - Train and Validate the Model](#part-b---train-and-validate-the-model)
     + [Part C - Test the Model](#part-c---test-the-model)
